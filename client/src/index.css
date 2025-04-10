@@ -1,0 +1,135 @@
+#root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  min-width: 1580px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+/* Primary Accent: Neon Pink (#FF2E63)
+Secondary Accent: Electric Blue (#08D9D6)
+Text: Off-white (#F5F5F5) */
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  background-color: #0d1b2a !important;
+  color: #f5f5f5 !important;
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.routes-container {
+  flex: 1; /* Pushes footer down */
+  padding: 20px;
+}
+.nav-link {
+  font-size: 22px !important;
+}
+.my-link {
+  text-decoration: none !important;
+}
+.my-link span {
+  font-size: 24px;
+  color: #ff2e63;
+  text-decoration: none !important;
+  padding: 7px 20px 7px 0px;
+  font-weight: 900;
+}
+.search-input {
+  background-color: transparent !important;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #a19494 !important;
+}
+.bg-body-tertiary.my-nav {
+  background-color: #0d1b2a !important;
+  border-bottom: 1px solid #f5f5f5;
+}
+.bg-body-tertiary.my-nav a {
+  color: #f5f5f5;
+  background-color: #0d1b2a;
+}
+.bg-body-tertiary.my-nav a.show {
+  color: #f5f5f5;
+  background-color: #0d1b2a;
+}
+.navbar-nav .dropdown-menu {
+  background-color: #0d1b2a !important;
+}
+.search-btn {
+  background-color: #08d9d6 !important;
+  border: 1px solid f5f5f5 !important;
+  color: #0d1b2a !important;
+}
+.header-container {
+  background-image: url("../src/assets/cin-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70vh;
+}
+.header-subtitle {
+  color: #f5f5f5;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  padding: 20px;
+}
+.header-subtitle h1 {
+  font-size: 50px;
+  color: #ff2e63;
+}
+.header-subtitle p {
+  font-size: 30px;
+}
+.sign-btn {
+  background-color: #08d9d6;
+  border: none;
+  color: #0d1b2a;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 18px;
+}
+.signup-page,
+.login-page {
+  margin-top: 100px;
+  padding: 40px;
+  background-image: url("../src/assets/1.jpg");
+}
+.signup-page .form-control,
+.login-page input {
+  background-color: #0d1b2a;
+  color: #f5f5f5;
+  border: 1px solid #f5f5f5;
+  margin-bottom: 30px;
+  text-align: center;
+  height: 45px;
+}
+.signup-page label,
+.login-page label {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #f5f5f5;
+  font-weight: bold;
+  padding: 10px;
+}
+.login-page input {
+  width: 50%;
+}
+.signup-page h1,
+.login-page h1 {
+  color: #ff2e63;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.footer-container {
+  padding: 30px 0px;
+}

@@ -53,4 +53,30 @@ router.post("/create", async (req, res) => {
     });
 });
 
+router.patch("/update/:movieId", (req, res) => {
+  Movies.findByIdAndUpdate(req.params.movieId, req.body, {
+    new: true,
+  })
+    .then((updatedMovie) => {
+      console.log("Movie updated!", updatedMovie);
+      res.status(200).json(updatedMovie);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ errorMessage: "Trouble updating your movie" });
+    });
+});
+
+router.delete("/delete/:movieId", async (req, res) => {
+  const { movieId } = req.params;
+  try {
+    const deletedMovie = await Movies.findByIdAndDelete(movieId);
+    console.log("movie deleted", deletedMovie);
+    res.status(204).json({ message: "movie deleted" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ errorMessage: "Trouble deleting the movie" });
+  }
+});
+
 module.exports = router;

@@ -8,6 +8,10 @@ import { Login } from "./pages/Login";
 import NotFound from "./pages/NotFoundPage";
 import Footer from "./components/Footer";
 import { Profile } from "./pages/Profile";
+import { AllMovies } from "./pages/AllMovies";
+import { CreateMovie } from "./pages/CreateMovie";
+import { EditMovie } from "./pages/EditMovie";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -19,7 +23,17 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/all-movies" element={<AllMovies />} />
+            <Route path="/create" element={<CreateMovie />} />
+            <Route path="/edit/:movieId" element={<EditMovie />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

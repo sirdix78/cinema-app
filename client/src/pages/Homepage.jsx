@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
+import { AllMovies } from "./AllMovies";
 
 const Homepage = () => {
   return (
@@ -7,6 +8,7 @@ const Homepage = () => {
       <Header />
       <div className="homepage-container">
         <h1>All movies</h1>
+        <AllMovies />
       </div>
     </div>
   );

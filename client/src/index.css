@@ -1,15 +1,19 @@
 #root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  min-width: 1580px;
+  font-family: "Poetsen One", sans-serif;
   margin: 0 auto;
   text-align: center;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
 }
 /* Primary Accent: Neon Pink (#FF2E63)
 Secondary Accent: Electric Blue (#08D9D6)
 Text: Off-white (#F5F5F5) */
+p {
+  font-family: "Mulish", sans-serif;
+  font-size: 18px;
+}
 body {
   margin: 0;
   display: flex;
@@ -24,7 +28,6 @@ body {
 }
 .routes-container {
   flex: 1; /* Pushes footer down */
-  padding: 20px;
 }
 .nav-link {
   font-size: 22px !important;
@@ -73,22 +76,29 @@ textarea::placeholder {
   background-repeat: no-repeat;
   height: 70vh;
 }
-.header-subtitle {
-  color: #f5f5f5;
-  background-color: rgba(0, 0, 0, 0.7);
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  padding: 20px;
-}
 .header-subtitle h1 {
   font-size: 50px;
   color: #ff2e63;
+  padding-bottom: 10px;
+}
+.carousel-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  color: white;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6); /* Optional background */
+  padding: 20px 40px;
+  border-radius: 12px;
+  width: 50%;
 }
 .header-subtitle p {
   font-size: 30px;
+  padding-bottom: 10px;
 }
+
 .sign-btn {
   background-color: #08d9d6;
   border: none;
@@ -96,6 +106,7 @@ textarea::placeholder {
   padding: 7px 14px;
   border-radius: 8px;
   font-size: 18px;
+  margin-right: 7px;
 }
 .signup-page,
 .login-page {
@@ -129,7 +140,40 @@ textarea::placeholder {
   margin-bottom: 20px;
   font-weight: 800;
 }
-
+.my-card {
+  margin: 10px 0px;
+  overflow: hidden;
+  height: 600px !important;
+  background: #0d1b2a !important;
+  color: white !important;
+  border: 1px solid white !important;
+}
+.movie-card .overview {
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Limit to 7 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden; /* Ensures text doesn't overflow */
+  text-overflow: ellipsis; /* Show '...' for truncated text */
+}
+.release-date {
+  font-size: 14px;
+  font-style: italic;
+}
+.my-title {
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 5px 0px;
+}
+.edit-btn {
+  background-color: #08d9d6 !important;
+  border: none !important;
+  margin-right: 10px;
+}
+.delete-btn {
+  background-color: #ff2e63 !important;
+  border: none !important;
+}
 .footer-container {
+  border-top: 1px solid gray;
   padding: 30px 0px;
 }

@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MyNavbar from "./components/MyNavbar";
 import HomePage from "./pages/Homepage";
@@ -14,30 +15,30 @@ import { EditMovie } from "./pages/EditMovie";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {
+  // to show all movies by default
+  const [category, setCategory] = useState("");
   return (
     <>
-      <MyNavbar />
-      <div className="app-container">
-        <div className="routes-container">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/signup" element={<SignUpPage />} />
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/all-movies" element={<AllMovies />} />
-            <Route path="/create" element={<CreateMovie />} />
-            <Route path="/edit/:movieId" element={<EditMovie />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      </div>
+      <MyNavbar setCategory={setCategory} />
+
+      <Routes>
+        <Route path="/" element={<HomePage category={category} />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/all-movies" element={<AllMovies />} />
+        <Route path="/create-a-movie" element={<CreateMovie />} />
+        <Route path="/edit/:movieId" element={<EditMovie />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
       <Footer />
     </>
   );

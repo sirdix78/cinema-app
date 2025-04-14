@@ -2,15 +2,16 @@ import React from "react";
 import Header from "../components/Header";
 import { AllMovies } from "./AllMovies";
 
-const Homepage = () => {
+const Homepage = ({ category }) => {
   return (
-    <div>
+    <>
       <Header />
-      <div className="homepage-container">
-        <h1>All movies</h1>
-        <AllMovies />
+      <div className="main-content">
+        <div className="container">
+          <AllMovies category={category} />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

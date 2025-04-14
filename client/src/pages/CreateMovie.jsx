@@ -25,11 +25,11 @@ export const CreateMovie = () => {
         }}
       >
         <input
-          type="text"
+          type="file"
           name="poster_path"
           placeholder="/abc.jpg"
           value={poster_path}
-          onChange={() => setImage(e.target.value)}
+          onChange={(e) => setImage(e.target.value)}
         />
         <label>
           Title:
@@ -50,7 +50,7 @@ export const CreateMovie = () => {
         <label>
           Release Date:
           <input
-            type="text"
+            type="date"
             value={release_date}
             onChange={(e) => setReleaseDate(e.target.value)}
           />

@@ -6,32 +6,34 @@ import axios from "axios";
 export const EditMovie = () => {
   const [poster_path, setImage] = useState("");
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [overview, setOverview] = useState("");
   const [release_date, setReleaseDate] = useState("");
-  const { handleCreateMovie } = useContext(MovieContext);
-  const { currentUser } = useContext(AuthContext);
+  const { movieId } = useParams();
+  const { movies, setMovies } = useContext(MovieContext);
+  const nav = useNavigate();
 
   useEffect(() => {
-    function getOnePizza() {
+    function getOneMovie() {
       axios
-        .get(`${import.meta.env.VITE_API_URL}/pizza/one-pizza/${pizzaId}`)
+        .get(`${import.meta.env.VITE_API_URL}/movies/one-movie/${movieId}`)
         .then((res) => {
-          console.log("here is one pizza", res.data);
+          console.log("here is one movie", res.data);
+          setImage(res.data.poster_path);
           setTitle(res.data.title);
-          setToppings(res.data.toppings);
-          setSize(res.data.size);
+          setOverview(res.data.overview);
+          setReleaseDate(res.data.release_date);
         })
         .catch((err) => console.log(err));
     }
-    getOnePizza();
-  }, [pizzaId]);
+    getOneMovie();
+  }, [movieId]);
 
   function handleUpdateMovie(event) {
     event.preventDefault();
     const updatedMovie = {
       poster_path,
       title,
-      description,
+      overview,
       release_date,
     };
     axios
@@ -57,13 +59,13 @@ export const EditMovie = () => {
 
   return (
     <div>
-      <h2>Create a Movie</h2>
+      <h2>Edit a Movie</h2>
       <form
         onSubmit={(event) => {
           handleUpdateMovie(event, {
             poster_path,
             title,
-            description,
+            overview,
             release_date,
           });
         }}
@@ -89,14 +91,14 @@ export const EditMovie = () => {
           Description:
           <input
             type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={overview}
+            onChange={(e) => setOverview(e.target.value)}
           />
         </label>
         <label>
-          Description:
+          Release Date:
           <input
-            type="text"
+            type="date"
             value={release_date}
             onChange={(e) => setReleaseDate(e.target.value)}
           />

@@ -6,7 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 
-function MyNavbar() {
+function MyNavbar({ setCategory }) {
   return (
     <Navbar expand="lg" className="bg-body-tertiary my-nav">
       <Container fluid>
@@ -20,13 +20,20 @@ function MyNavbar() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            {/* <Link to="/">Home</Link> */}
-            <NavDropdown title="Categories" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">All Movies</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Upcoming Movies
+            <NavDropdown title="Categories" id="basic-nav-dropdown">
+              <NavDropdown.Item onClick={() => "playing_now"}>
+                Playing Now
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action5">Top Rated</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => setCategory("top_rated")}>
+                Top Rated
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => setCategory("upcoming")}>
+                Upcoming
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item onClick={() => setCategory("")}>
+                All Movies
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Form className="d-flex">

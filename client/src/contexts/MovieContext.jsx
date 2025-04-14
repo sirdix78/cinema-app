@@ -27,26 +27,26 @@ const MovieContextWrapper = ({ children }) => {
 
   async function handleCreateMovie(event, aMovie) {
     event.preventDefault();
-    //create a variable for the image from the event
-    const image = event.target.image.files[0];
-    myFormData.append("poster_path", image);
-    //Add all the properties to the form data with the .append( ) method
+
     const myFormData = new FormData();
-    // myFormData.append("image", aMovie.image);
+    const image = event.target.poster_path.files[0];
+    //Add all the properties to the form data with the .append( ) method
+    myFormData.append("poster_path", image);
     myFormData.append("title", aMovie.title);
     myFormData.append("overview", aMovie.overview);
     myFormData.append("release_date", aMovie.release_date);
 
     try {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/movies/create`,
-        myFormData
+        `${import.meta.env.VITE_API_URL}/movies/create-a-movie`,
+        aMovie
       );
       console.log("movies created", data);
       setMovies([data, ...movies]);
-      nav("/all-movies");
+      nav("/");
     } catch (error) {
       console.log(error);
+      console.log("cant create a movie");
     }
   }
   function handleDeleteMovie(movieId) {

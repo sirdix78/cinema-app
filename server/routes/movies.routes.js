@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Movies = require("../models/movies.model");
+const uploader = require("../middlewares/cloudinary.config.js");
 
 router.get("/all-movies", (req, res) => {
   Movies.find()
@@ -41,7 +42,7 @@ router.get("/upcoming", (req, res) => {
       res.status(500).json(err);
     });
 });
-router.post("/create", async (req, res) => {
+router.post("/create-a-movie", async (req, res) => {
   Movies.create(req.body)
     .then((responseFromDB) => {
       console.log("Movie created!", responseFromDB);
@@ -78,5 +79,16 @@ router.delete("/delete/:movieId", async (req, res) => {
     res.status(500).json({ errorMessage: "Trouble deleting the movie" });
   }
 });
+router.post("/upload", uploader.single("imageUrl"), (req, res, next) => {
+  // the uploader.single() callback will send the file to cloudinary and get you and obj with the url in return
+  console.log("file is: ", req.file);
 
+  if (!req.file) {
+    console.log(
+      "there was an error uploading the file",
+      next(new Error("No file uploaded!"))
+    );
+    return;
+  }
+});
 module.exports = router;

@@ -1044,6 +1044,21 @@ const upcomingMovies = moviesArray.slice(36, 59).map((movie) => {
   movie.top_rated = false;
   return movie;
 });
+// const playingNowMovies = moviesArray.slice(0, 15).map((movie) => {
+//   movie.category = "playing_now"; // Add a single category field
+//   return movie;
+// });
+
+// const topRatedMovies = moviesArray.slice(16, 35).map((movie) => {
+//   movie.category = "top_rated"; // Add a single category field
+//   return movie;
+// });
+
+// const upcomingMovies = moviesArray.slice(36, 59).map((movie) => {
+//   movie.category = "upcoming"; // Add a single category field
+//   return movie;
+// });
+
 console.log(upcomingMovies);
 Movies.insertMany([...playingNowMovies, ...topRatedMovies, ...upcomingMovies])
   .then(() => {

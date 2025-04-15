@@ -2,12 +2,11 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
-export const Profile = () => {
+import { AllMovies } from "./AllMovies";
+
+export const Profile = ({ category }) => {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
-  console.log(
-    "here is the name on the profile page from the context",
-    currentUser
-  );
+
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/auth/profile/${currentUser._id}`)
@@ -18,7 +17,7 @@ export const Profile = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [currentUser._id]);
+  }, [currentUser?._id]);
   return (
     <div className="profile-page">
       <h2>
@@ -30,24 +29,21 @@ export const Profile = () => {
             <Link to="/create-a-movie">
               <button>Create a Movie</button>
             </Link>
-            <Link to="/all-movies">
+            {/* <Link to="/all-movies">
               <button>See all movies</button>
-            </Link>
+            </Link> */}
+            <AllMovies category={category} />
           </>
         ) : (
           <>
-            <Link to="/all-movies">
+            {/* <Link to="/all-movies">
               <button>Browse Movies</button>
-            </Link>
+            </Link> */}
             <p>Welcome to your movie space!</p>
+            <AllMovies category={category} />
           </>
         )}
       </section>
-      {/* <img
-        src={currentUser.profileImage}
-        alt="profile picture"
-        className="profile-img"
-      /> */}
     </div>
   );
 };

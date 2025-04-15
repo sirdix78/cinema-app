@@ -5,8 +5,13 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
+import { IoIosLogIn } from "react-icons/io";
+import { LuUserRoundPlus } from "react-icons/lu";
+import { useContext } from "react";
+import { MovieContext } from "../contexts/MovieContext";
 
 function MyNavbar({ setCategory }) {
+  const { searchTerm, setSearchTerm } = useContext(MovieContext);
   return (
     <Navbar expand="lg" className="bg-body-tertiary my-nav">
       <Container fluid>
@@ -21,7 +26,7 @@ function MyNavbar({ setCategory }) {
             navbarScroll
           >
             <NavDropdown title="Categories" id="basic-nav-dropdown">
-              <NavDropdown.Item onClick={() => "playing_now"}>
+              <NavDropdown.Item onClick={() => setCategory("playing_now")}>
                 Playing Now
               </NavDropdown.Item>
               <NavDropdown.Item onClick={() => setCategory("top_rated")}>
@@ -36,12 +41,19 @@ function MyNavbar({ setCategory }) {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
+          <Link to="/login">
+            <IoIosLogIn className="icons" />
+          </Link>
+          <Link to="/signup">
+            <LuUserRoundPlus className="icons" />
+          </Link>
           <Form className="d-flex">
             <Form.Control
               type="search"
               placeholder="Search"
               className="search-input me-2"
-              aria-label="Search"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
             <Button className="search-btn" variant="outline-success">
               Search

@@ -140,6 +140,13 @@ textarea::placeholder {
   margin-bottom: 20px;
   font-weight: 800;
 }
+.icons {
+  margin-right: 15px;
+  font-size: 25px;
+}
+.profile-page h2 {
+  padding: 30px;
+}
 .my-card {
   margin: 10px 0px;
   overflow: hidden;

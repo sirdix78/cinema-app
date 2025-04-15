@@ -29,7 +29,7 @@ function App() {
           path="/profile"
           element={
             <ProtectedRoute>
-              <Profile />
+              <Profile category={category} />
             </ProtectedRoute>
           }
         />

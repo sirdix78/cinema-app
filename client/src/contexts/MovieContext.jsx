@@ -6,6 +6,7 @@ const MovieContext = createContext();
 
 const MovieContextWrapper = ({ children }) => {
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const nav = useNavigate();
 
   useEffect(() => {
@@ -39,7 +40,7 @@ const MovieContextWrapper = ({ children }) => {
     try {
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/movies/create-a-movie`,
-        aMovie
+        myFormData
       );
       console.log("movies created", data);
       setMovies([data, ...movies]);
@@ -71,6 +72,8 @@ const MovieContextWrapper = ({ children }) => {
       value={{
         movies,
         setMovies,
+        searchTerm,
+        setSearchTerm,
         handleCreateMovie,
         handleDeleteMovie,
       }}

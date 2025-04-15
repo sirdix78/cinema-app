@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
-import ExampleCarouselImage1 from "../assets/2.jpg";
+import ExampleCarouselImage1 from "../assets/bg1.jpg";
 import ExampleCarouselImage2 from "../assets/bg2.jpg";
-import ExampleCarouselImage3 from "../assets/b2.jpg";
+import ExampleCarouselImage3 from "../assets/bg3.jpg";
 
 const Header = () => {
   return (

@@ -42,17 +42,38 @@ router.get("/upcoming", (req, res) => {
       res.status(500).json(err);
     });
 });
-router.post("/create-a-movie", async (req, res) => {
-  Movies.create(req.body)
-    .then((responseFromDB) => {
-      console.log("Movie created!", responseFromDB);
-      res.status(201).json(responseFromDB);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ errorMessage: "Trouble creating your movie" });
-    });
-});
+router.post(
+  "/create-a-movie",
+  uploader.single("poster_path"),
+  async (req, res) => {
+    console.log({ body: req.body, file: req.file });
+    if (!req.file) {
+      Movies.create(req.body)
+        .then((responseFromDB) => {
+          console.log("Movie created!", responseFromDB);
+          res.status(201).json(responseFromDB);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({ errorMessage: "Trouble creating your movie" });
+        });
+    } else {
+      const movieToCreateWithImage = {
+        ...req.body,
+        poster_path: req.file.path,
+      };
+      Movies.create(movieToCreateWithImage)
+        .then((responseFromDB) => {
+          console.log("Movie created!", responseFromDB);
+          res.status(201).json(responseFromDB);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({ errorMessage: "Trouble creating your movie" });
+        });
+    }
+  }
+);
 
 router.patch("/update/:movieId", (req, res) => {
   Movies.findByIdAndUpdate(req.params.movieId, req.body, {
@@ -79,16 +100,15 @@ router.delete("/delete/:movieId", async (req, res) => {
     res.status(500).json({ errorMessage: "Trouble deleting the movie" });
   }
 });
-router.post("/upload", uploader.single("imageUrl"), (req, res, next) => {
-  // the uploader.single() callback will send the file to cloudinary and get you and obj with the url in return
-  console.log("file is: ", req.file);
-
-  if (!req.file) {
-    console.log(
-      "there was an error uploading the file",
-      next(new Error("No file uploaded!"))
-    );
-    return;
-  }
-});
+// router.post("/upload", uploader.single("poster_path"), (req, res, next) => {
+//   // the uploader.single() callback will send the file to cloudinary and get you and obj with the url in return
+//   console.log("file is: ", req.file);
+//   if (!req.file) {
+//     console.log(
+//       "there was an error uploading the file",
+//       next(new Error("No file uploaded!"))
+//     );
+//     return;
+//   }
+// });
 module.exports = router;

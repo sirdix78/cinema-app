@@ -1,6 +1,6 @@
 const Movies = require("./models/movies.model");
 
-const moviesArray = [
+let moviesArray = [
   {
     adult: false,
     backdrop_path: "/2Nti3gYAX513wvhp8IiLL6ZDyOm.jpg",
@@ -75,13 +75,13 @@ const moviesArray = [
     genre_ids: [14, 12, 28],
     id: 324544,
     original_language: "en",
-    original_title: "In the Lost Lands",
+    original_title: "In the Lost Land",
     overview:
       "A queen sends the powerful and feared sorceress Gray Alys to the ghostly wilderness of the Lost Lands in search of a magical power, where the sorceress and her guide, the drifter Boyce must outwit and outfight man and demon.",
     popularity: 534.2664,
     poster_path: "/dDlfjR7gllmr8HTeN6rfrYhTdwX.jpg",
     release_date: "2025-02-27",
-    title: "In the Lost Lands",
+    title: "In the Lost Land",
     video: false,
     vote_average: 6.1,
     vote_count: 47,
@@ -688,13 +688,13 @@ const moviesArray = [
     genre_ids: [10751, 35, 12, 14],
     id: 950387,
     original_language: "en",
-    original_title: "A Minecraft Movie",
+    original_title: "A Minecraft Movie 2",
     overview:
       "Four misfits find themselves struggling with ordinary problems when they are suddenly pulled through a mysterious portal into the Overworld: a bizarre, cubic wonderland that thrives on imagination. To get back home, they'll have to master this world while embarking on a magical quest with an unexpected, expert crafter, Steve.",
     popularity: 990.9442,
     poster_path: "/yFHHfHcUgGAxziP1C3lLt0q2T4s.jpg",
     release_date: "2025-03-31",
-    title: "A Minecraft Movie",
+    title: "A Minecraft Movie 2",
     video: false,
     vote_average: 6.123,
     vote_count: 346,
@@ -722,13 +722,13 @@ const moviesArray = [
     genre_ids: [28, 53],
     id: 1212855,
     original_language: "en",
-    original_title: "Fight or Flight",
+    original_title: "Flight",
     overview:
       "A mercenary takes on the job of tracking down a target on a plane but must protect her when they're surrounded by people trying to kill both of them.",
     popularity: 197.3977,
     poster_path: "/x4nWnfgJvL045rcUCSJzfgIIY9i.jpg",
     release_date: "2025-04-03",
-    title: "Fight or Flight",
+    title: "Flight",
     video: false,
     vote_average: 4.63,
     vote_count: 27,
@@ -1024,7 +1024,11 @@ const moviesArray = [
   },
 ];
 require("./db");
-const playingNowMovies = moviesArray.slice(0, 15).map((movie) => {
+moviesArray = moviesArray.map((movie) => {
+  movie.poster_path = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
+  return movie;
+});
+const playingNowMovies = moviesArray.slice(0, 20).map((movie) => {
   movie.playing_now = true;
   movie.top_rated = false;
   movie.upcoming = false;
@@ -1032,34 +1036,24 @@ const playingNowMovies = moviesArray.slice(0, 15).map((movie) => {
 });
 console.log(moviesArray.length);
 
-const topRatedMovies = moviesArray.slice(16, 35).map((movie) => {
+const topRatedMovies = moviesArray.slice(20, 40).map((movie) => {
   movie.top_rated = true;
   movie.playing_now = false;
   movie.upcoming = false;
   return movie;
 });
-const upcomingMovies = moviesArray.slice(36, 59).map((movie) => {
+const upcomingMovies = moviesArray.slice(40, 59).map((movie) => {
   movie.upcoming = true;
   movie.playing_now = false;
   movie.top_rated = false;
   return movie;
 });
-// const playingNowMovies = moviesArray.slice(0, 15).map((movie) => {
-//   movie.category = "playing_now"; // Add a single category field
-//   return movie;
-// });
 
-// const topRatedMovies = moviesArray.slice(16, 35).map((movie) => {
-//   movie.category = "top_rated"; // Add a single category field
-//   return movie;
-// });
+console.log("Playing Now Movies:", playingNowMovies.length);
+console.log("Top Rated Movies:", topRatedMovies.length);
+console.log("Upcoming Movies:", upcomingMovies);
 
-// const upcomingMovies = moviesArray.slice(36, 59).map((movie) => {
-//   movie.category = "upcoming"; // Add a single category field
-//   return movie;
-// });
-
-console.log(upcomingMovies);
+console.log(topRatedMovies.length);
 Movies.insertMany([...playingNowMovies, ...topRatedMovies, ...upcomingMovies])
   .then(() => {
     console.log("Data inserted successfully");

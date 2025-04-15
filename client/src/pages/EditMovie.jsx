@@ -59,8 +59,9 @@ export const EditMovie = () => {
 
   return (
     <div>
-      <h2>Edit a Movie</h2>
+      <h2 className="edit-title">Edit a Movie</h2>
       <form
+        className="edit-movie"
         onSubmit={(event) => {
           handleUpdateMovie(event, {
             poster_path,
@@ -70,40 +71,34 @@ export const EditMovie = () => {
           });
         }}
       >
-        <label>
-          Movie Image:
-          <input
-            type="file"
-            name="image"
-            value={poster_path}
-            onChange={(e) => setImage(e.target.value)}
-          />
-        </label>
-        <label>
-          Title:
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </label>
-        <label>
-          Description:
-          <input
-            type="text"
-            value={overview}
-            onChange={(e) => setOverview(e.target.value)}
-          />
-        </label>
-        <label>
-          Release Date:
-          <input
-            type="date"
-            value={release_date}
-            onChange={(e) => setReleaseDate(e.target.value)}
-          />
-        </label>
-        <button>Update</button>
+        <label>Movie Image: </label>
+        <input
+          type="file"
+          name="image"
+          value={poster_path}
+          onChange={(e) => setImage(e.target.value)}
+        />
+        <label>Title: </label>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <label>Description: </label>
+        <input
+          type="text"
+          value={overview}
+          onChange={(e) => setOverview(e.target.value)}
+        />
+        <label>Release Date:</label>
+        <input
+          type="date"
+          value={release_date}
+          onChange={(e) => setReleaseDate(e.target.value)}
+        />
+        <button className="edit-btn" variant="outline-success">
+          Update
+        </button>
       </form>
     </div>
   );

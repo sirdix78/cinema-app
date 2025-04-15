@@ -3,6 +3,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { AllMovies } from "./AllMovies";
+import YouTubeEmbed from "../components/YouTubeEmbed.jsx";
 
 export const Profile = ({ category }) => {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
@@ -26,20 +27,17 @@ export const Profile = ({ category }) => {
       <section>
         {currentUser.admin ? (
           <>
+            <h4>Welcome to your profile!</h4>
+            <YouTubeEmbed videoId="KOYVtX9KWmI" />
             <Link to="/create-a-movie">
               <button>Create a Movie</button>
             </Link>
-            {/* <Link to="/all-movies">
-              <button>See all movies</button>
-            </Link> */}
             <AllMovies category={category} />
           </>
         ) : (
           <>
-            {/* <Link to="/all-movies">
-              <button>Browse Movies</button>
-            </Link> */}
-            <p>Welcome to your movie space!</p>
+            <h4>Welcome to your movie space!</h4>
+            <YouTubeEmbed videoId="iV46TJKL8cU" />
             <AllMovies category={category} />
           </>
         )}

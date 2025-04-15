@@ -5,11 +5,17 @@ import { Link } from "react-router-dom";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
-import axios from "axios";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 export const AllMovies = ({ category }) => {
-  const { movies, handleDeleteMovie, searchTerm, setSearchTerm } =
-    useContext(MovieContext);
+  const {
+    movies,
+    handleDeleteMovie,
+    searchTerm,
+    // setSearchTerm,
+    favorites,
+    toggleFavorite,
+  } = useContext(MovieContext);
   const { currentUser } = useContext(AuthContext);
 
   const getHeading = () => {
@@ -67,6 +73,17 @@ export const AllMovies = ({ category }) => {
                           .replace(/\//g, ".")}
                       </strong>
                     </Card.Text>
+                    <Button
+                      className="favorite-btn"
+                      onClick={() => toggleFavorite(oneMovie._id)}
+                      variant="link"
+                    >
+                      {favorites.includes(oneMovie._id) ? (
+                        <FaHeart color="red" />
+                      ) : (
+                        <FaRegHeart color="gray" />
+                      )}
+                    </Button>
                     {currentUser?.admin && (
                       <section>
                         <Link to={`/edit/${oneMovie._id}`}>

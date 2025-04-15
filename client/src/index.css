@@ -21,6 +21,9 @@ body {
   background-color: #0d1b2a !important;
   color: #f5f5f5 !important;
 }
+.btn.btn-primary {
+  margin: 15px 5px !important;
+}
 .app-container {
   display: flex;
   flex-direction: column;
@@ -44,6 +47,8 @@ body {
 }
 .search-input {
   background-color: transparent !important;
+  height: 38px;
+  margin-top: 15px;
 }
 input::placeholder,
 textarea::placeholder {
@@ -81,6 +86,27 @@ textarea::placeholder {
   color: #ff2e63;
   padding-bottom: 10px;
 }
+.create-title,
+.edit-title {
+  padding: 30px;
+  color: #08d9d6;
+}
+.create-movie,
+.edit-movie {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 1.8;
+  margin: 20px auto;
+}
+label {
+  padding: 20px;
+}
+.create-btn,
+.edit-btn {
+  margin: 50px 0px !important;
+  background-color: #08d9d6 !important;
+}
 .carousel-banner {
   position: absolute;
   top: 50%;
@@ -90,9 +116,9 @@ textarea::placeholder {
   color: white;
   text-align: center;
   background: rgba(0, 0, 0, 0.6); /* Optional background */
-  padding: 20px 40px;
+  padding: 30px 40px;
   border-radius: 12px;
-  width: 50%;
+  width: 40%;
 }
 .header-subtitle p {
   font-size: 30px;
@@ -111,8 +137,10 @@ textarea::placeholder {
 .signup-page,
 .login-page {
   margin-top: 100px;
-  padding: 40px;
-  background-image: url("../src/assets/1.jpg");
+  padding: 100px;
+  background-image: url("../src/assets/login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .signup-page .form-control,
 .login-page input {
@@ -146,14 +174,15 @@ textarea::placeholder {
 }
 .profile-page h2 {
   padding: 30px;
+  color: #08d9d6;
 }
 .my-card {
   margin: 10px 0px;
   overflow: hidden;
-  height: 600px !important;
+  height: 650px !important;
   background: #0d1b2a !important;
   color: white !important;
-  border: 1px solid white !important;
+  border: 1px solid #08d9d6 !important;
 }
 .movie-card .overview {
   display: -webkit-box;
@@ -181,6 +210,11 @@ textarea::placeholder {
   border: none !important;
 }
 .footer-container {
-  border-top: 1px solid gray;
-  padding: 30px 0px;
+  border-top: 4px solid #08d9d6;
+  padding: 20px 0px;
+  margin-top: 30px;
+}
+.footer-container h4 {
+  color: #ff2e63;
+  padding: 20px 0px;
 }

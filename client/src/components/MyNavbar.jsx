@@ -51,13 +51,11 @@ function MyNavbar({ setCategory }) {
             <Form.Control
               type="search"
               placeholder="Search"
-              className="search-input me-2"
+              className="search-input me-2 my-search"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <Button className="search-btn" variant="outline-success">
-              Search
-            </Button>
+            <Button className="search-btn">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>

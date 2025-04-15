@@ -12,8 +12,9 @@ export const CreateMovie = () => {
 
   return (
     <div>
-      <h2>Create a Movie</h2>
+      <h2 className="create-title">Create a Movie</h2>
       <form
+        className="create-movie"
         onSubmit={(event) => {
           handleCreateMovie(event, {
             poster_path,
@@ -31,31 +32,29 @@ export const CreateMovie = () => {
           value={poster_path}
           onChange={(e) => setImage(e.target.value)}
         />
-        <label>
-          Title:
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </label>
-        <label>
-          Description:
-          <input
-            type="text"
-            value={overview}
-            onChange={(e) => setOverview(e.target.value)}
-          />
-        </label>
-        <label>
-          Release Date:
-          <input
-            type="date"
-            value={release_date}
-            onChange={(e) => setReleaseDate(e.target.value)}
-          />
-        </label>
-        <button>Create</button>
+        <label>Title:</label>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+
+        <label>Description:</label>
+        <input
+          type="text"
+          value={overview}
+          onChange={(e) => setOverview(e.target.value)}
+        />
+
+        <label>Release Date:</label>
+        <input
+          type="date"
+          value={release_date}
+          onChange={(e) => setReleaseDate(e.target.value)}
+        />
+        <button className="create-btn" variant="outline-success">
+          Create
+        </button>
       </form>
     </div>
   );

@@ -7,6 +7,7 @@ const MovieContext = createContext();
 const MovieContextWrapper = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [favorites, setFavorites] = useState([]);
   const nav = useNavigate();
 
   useEffect(() => {
@@ -25,6 +26,17 @@ const MovieContextWrapper = ({ children }) => {
 
     getAllMovies();
   }, []);
+  // Load favorites from localStorage on app load
+  useEffect(() => {
+    const savedFavorites =
+      JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+    setFavorites(savedFavorites);
+  }, []);
+
+  // Save favorites to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("favoriteMovies", JSON.stringify(favorites));
+  }, [favorites]);
 
   async function handleCreateMovie(event, aMovie) {
     event.preventDefault();
@@ -67,6 +79,15 @@ const MovieContextWrapper = ({ children }) => {
         console.log(err);
       });
   }
+  function toggleFavorite(movieId) {
+    if (favorites.includes(movieId)) {
+      // Remove from favorites
+      setFavorites(favorites.filter((id) => id !== movieId));
+    } else {
+      // Add to favorites
+      setFavorites([...favorites, movieId]);
+    }
+  }
   return (
     <MovieContext.Provider
       value={{
@@ -74,6 +95,9 @@ const MovieContextWrapper = ({ children }) => {
         setMovies,
         searchTerm,
         setSearchTerm,
+        favorites,
+        setFavorites,
+        toggleFavorite,
         handleCreateMovie,
         handleDeleteMovie,
       }}

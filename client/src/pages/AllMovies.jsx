@@ -37,11 +37,6 @@ export const AllMovies = ({ category }) => {
       <Row>
         {movies
           .filter((oneMovie) => {
-            // if (category === "") {
-            //   return oneMovie;
-            // } else {
-            //   return oneMovie[category];
-            // }
             const matchesCategory = category === "" || oneMovie[category];
             const matchesSearch = oneMovie.title
               .toLowerCase()

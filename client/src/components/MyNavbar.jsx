@@ -12,6 +12,7 @@ import { MovieContext } from "../contexts/MovieContext";
 
 function MyNavbar({ setCategory }) {
   const { searchTerm, setSearchTerm } = useContext(MovieContext);
+  console.log(searchTerm);
   return (
     <Navbar expand="lg" className="bg-body-tertiary my-nav">
       <Container fluid>
@@ -49,8 +50,11 @@ function MyNavbar({ setCategory }) {
           </Link>
           <Form className="d-flex">
             <Form.Control
-              type="search"
+              type="text"
               placeholder="Search"
+              style={{
+                color: "white",
+              }}
               className="search-input me-2 my-search"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}

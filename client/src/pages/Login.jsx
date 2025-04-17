@@ -37,6 +37,14 @@ export const Login = () => {
     <>
       <Container className="login-page">
         <h1>My Cinema</h1>
+        {errorMessage && (
+          <div
+            className="alert alert-danger mt-3 mx-auto w-50 text-center"
+            role="alert"
+          >
+            {errorMessage}
+          </div>
+        )}
         <form onSubmit={handleLogin}>
           <label>Email: </label>
           <Row>
@@ -47,6 +55,7 @@ export const Login = () => {
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
+                  setErrorMessage("Please enter a valid email");
                 }}
               />
             </Col>
@@ -60,8 +69,9 @@ export const Login = () => {
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
+                  setErrorMessage("Please enter your password");
                 }}
-              />{" "}
+              />
             </Col>
           </Row>
 

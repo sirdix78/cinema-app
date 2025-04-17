@@ -10,11 +10,32 @@ const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const nav = useNavigate();
   //function to send a post request to create a user in the DB
   function handleSignup(event) {
-    //first is to stop the page from reloading
-    event.preventDefault();
+    event.preventDefault(); //first is to stop the page from reloading
+    if (username.length === 0) {
+      setErrorMessage("Please write your username");
+      return;
+    }
+    if (password.length === 0) {
+      setErrorMessage("Please enter the password");
+      return;
+    }
+    if (email.length === 0) {
+      setErrorMessage("Please enter a valid email");
+      return;
+    }
+    if (repeatPassword.length === 0) {
+      setErrorMessage("Please repeat password");
+      return;
+    }
+    if (password !== repeatPassword) {
+      setErrorMessage("Passwords do not match.");
+      return;
+    }
+
     const userToCreateInDB = { username, email, password: password };
     axios
       .post(`${import.meta.env.VITE_API_URL}/auth/signup`, userToCreateInDB)
@@ -24,6 +45,11 @@ const SignUpPage = () => {
       })
       .catch((err) => {
         console.log(err);
+        if (err.response?.data?.message) {
+          setErrorMessage(err.response.data.message);
+        } else {
+          setErrorMessage("Signup failed. Please try again later.");
+        }
       });
   }
 
@@ -31,6 +57,15 @@ const SignUpPage = () => {
     <>
       <Container className="signup-page">
         <h1>My Cinema</h1>
+        {/* Error message display -> if email is not with @, if the passwords dont match*/}
+        {errorMessage && (
+          <div
+            className="alert alert-danger mt-3 mx-auto w-50 text-center"
+            role="alert"
+          >
+            {errorMessage}
+          </div>
+        )}
         <form onSubmit={handleSignup}>
           <Row>
             <Col md={6}>
@@ -73,8 +108,8 @@ const SignUpPage = () => {
             </Col>
           </Row>
           <label>
-            <input type="radio" name="myRadio" value="option1" /> I agree with
-            terms and conditions
+            <input type="radio" name="myRadio" value="option1" required /> I
+            agree with terms and conditions
           </label>
           <Row className="mt-3">
             <Col>

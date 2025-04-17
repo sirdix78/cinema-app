@@ -11,10 +11,11 @@ const movieSchema = new Schema(
     },
     poster_path: {
       type: String,
-      //   required: [true, "Poster path is required."],
+      required: [true, "Poster path is required."],
     },
     overview: {
       type: String,
+      required: [true, "Overview is required."],
     },
     release_date: {
       type: Date,

@@ -18,7 +18,7 @@ router.post("/signup", async (req, res) => {
     res.status(201).json({ message: "user successfully created in DB" });
   } catch (error) {
     console.log(error);
-    res.status(500).json(error);
+    res.status(500).json({ message: "Sign up failed!" });
   }
 });
 
@@ -48,12 +48,12 @@ router.post("/login", async (req, res) => {
           algorithm: "HS256",
           expiresIn: "6h",
         });
-        res.status(200).json({ message: "you logged in!", authToken });
+        res.status(200).json({ message: "You logged in!", authToken });
       }
     }
   } catch (error) {
     console.log(error);
-    res.status(500).json(error);
+    res.status(500).json({ message: "Login failed!" });
   }
 });
 

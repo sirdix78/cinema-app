@@ -3,6 +3,7 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
+      required: [true, "Username is required."],
     },
     email: {
       type: String,

@@ -6,7 +6,8 @@ const mongoose = require("mongoose");
 // If no env has been set, we dynamically set it to whatever the folder name was upon the creation of the app
 
 const MONGO_URI =
-  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/my-cinema";
+  "mongodb+srv://kristigjoka92:qIo1IGRqaKOP0wlm@cluster-cinema.8anb89b.mongodb.net/" ||
+  "mongodb://127.0.0.1:27017/my-cinema";
 
 mongoose
   .connect(MONGO_URI)

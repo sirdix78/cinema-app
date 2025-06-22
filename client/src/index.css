@@ -1,0 +1,233 @@
+#root {
+  font-family: "Poetsen One", sans-serif;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+/* Primary Accent: Neon Pink (#FF2E63)
+Secondary Accent: Electric Blue (#08D9D6)
+Text: Off-white (#F5F5F5) */
+p {
+  font-family: "Mulish", sans-serif;
+  font-size: 18px;
+}
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  background-color: #0d1b2a !important;
+  color: #f5f5f5 !important;
+}
+.btn.btn-primary {
+  margin: 15px 5px !important;
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.routes-container {
+  flex: 1; /* Pushes footer down */
+}
+.nav-link {
+  font-size: 22px !important;
+}
+.my-link {
+  text-decoration: none !important;
+}
+.my-link span {
+  font-size: 24px;
+  color: #ff2e63;
+  text-decoration: none !important;
+  padding: 7px 20px 7px 0px;
+  font-weight: 900;
+}
+.search-input {
+  background-color: transparent !important;
+  height: 38px;
+  margin-top: 15px;
+}
+input::placeholder,
+textarea::placeholder {
+  color: black !important;
+}
+
+.bg-body-tertiary.my-nav {
+  background-color: #0d1b2a !important;
+  border-bottom: 1px solid #f5f5f5;
+}
+.bg-body-tertiary.my-nav a {
+  color: #f5f5f5;
+  background-color: #0d1b2a;
+}
+.bg-body-tertiary.my-nav a.show {
+  color: #f5f5f5;
+  background-color: #0d1b2a;
+}
+.navbar-nav .dropdown-menu {
+  background-color: #0d1b2a !important;
+}
+.search-btn {
+  background-color: #08d9d6 !important;
+  border: 1px solid f5f5f5 !important;
+  color: #0d1b2a !important;
+}
+.header-container {
+  background-image: url("../src/assets/cin-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70vh;
+}
+.header-subtitle h1 {
+  font-size: 50px;
+  color: #ff2e63;
+  padding-bottom: 10px;
+}
+.create-title,
+.edit-title {
+  padding: 30px;
+  color: #08d9d6;
+}
+.create-movie,
+.edit-movie {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 1.8;
+  margin: 20px auto;
+}
+label {
+  padding: 20px;
+}
+.create-btn,
+.edit-btn {
+  margin: 50px 0px !important;
+  background-color: #08d9d6 !important;
+}
+.carousel-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  color: white;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6); /* Optional background */
+  padding: 30px 40px;
+  border-radius: 12px;
+  width: 40%;
+}
+.header-subtitle p {
+  font-size: 30px;
+  padding-bottom: 10px;
+}
+
+.sign-btn {
+  background-color: #08d9d6;
+  border: none;
+  color: #0d1b2a;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 18px;
+  margin-right: 7px;
+}
+.signup-page,
+.login-page {
+  margin-top: 100px;
+  padding: 100px;
+  background-image: url("../src/assets/login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.signup-page .form-control,
+.login-page input {
+  background-color: #0d1b2a;
+  color: #f5f5f5;
+  border: 1px solid #f5f5f5;
+  margin-bottom: 30px;
+  text-align: center;
+  height: 45px;
+}
+.signup-page label,
+.login-page label {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #f5f5f5;
+  font-weight: bold;
+  padding: 10px;
+}
+.login-page input {
+  width: 50%;
+}
+.signup-page h1,
+.login-page h1 {
+  color: #ff2e63;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+.icons {
+  margin-right: 15px;
+  font-size: 25px;
+}
+.profile-page h2 {
+  padding: 40px;
+  color: #08d9d6;
+}
+.my-card {
+  margin: 10px 0px;
+  overflow: hidden;
+  height: 650px !important;
+  background: #0d1b2a !important;
+  color: white !important;
+  border: 1px solid #08d9d6 !important;
+}
+.movie-card .overview {
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Limit to 7 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden; /* Ensures text doesn't overflow */
+  text-overflow: ellipsis; /* Show '...' for truncated text */
+}
+.release-date {
+  font-size: 14px;
+  font-style: italic;
+}
+.my-title {
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 5px 0px;
+}
+.edit-btn {
+  background-color: #08d9d6 !important;
+  border: none !important;
+  margin-right: 10px;
+}
+.delete-btn {
+  background-color: #ff2e63 !important;
+  border: none !important;
+}
+.footer-container {
+  border-top: 4px solid #08d9d6;
+  padding: 20px 0px;
+  margin-top: 30px;
+}
+.pagination {
+  margin: 30px auto;
+}
+.page-link {
+  background-color: #08d9d6 !important;
+  color: white !important;
+}
+.page-item.active .page-link {
+  background-color: #ff2e63 !important;
+  border-color: #ff2e63 !important;
+  color: #f5f5f5 !important;
+}
+.footer-container h4 {
+  color: #ff2e63;
+  padding: 20px 0px;
+}

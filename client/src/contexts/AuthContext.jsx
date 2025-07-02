@@ -38,7 +38,7 @@ const AuthContextWrapper = ({ children }) => {
       }
     }
   };
-  //make a useEffect so anytime the page reloads, we verigy the token again
+  //make a useEffect so anytime the page reloads, we verify the token again
   useEffect(() => {
     authenticateUser();
   }, []);

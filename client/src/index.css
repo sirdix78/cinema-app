@@ -210,6 +210,11 @@ label {
   background-color: #ff2e63 !important;
   border: none !important;
 }
+.btn-logout {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
 .footer-container {
   border-top: 4px solid #08d9d6;
   padding: 20px 0px;

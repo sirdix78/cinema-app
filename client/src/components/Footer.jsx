@@ -10,31 +10,55 @@ const Footer = () => {
       <Row>
         <Col sm>
           <h4>Movies</h4>
-          <p>All Movies</p>
-          <p>Playing now</p>
-          <p>Top Rated</p>
-          <p>Upcoming</p>
+          <p>
+            <Link to="#">All Movies</Link>
+          </p>
+          <p>
+            <Link to="#">Playing now</Link>
+          </p>
+          <p>
+            <Link to="#">Top Rated</Link>
+          </p>
+          <p>
+            <Link to="#">Upcoming</Link>
+          </p>
         </Col>
         <Col sm>
           <h4>Information</h4>
-          <p>Technology</p>
-          <p>Gift Card</p>
-          <p>Bonus Card</p>
-          <p>Prices</p>
+          <p>
+            <Link to="#">Technology</Link>
+          </p>
+          <p>
+            <Link to="#">Gift Card</Link>
+          </p>
+          <p>
+            <Link to="#">Bonus Card</Link>
+          </p>
+          <p>
+            <Link to="#">Prices</Link>
+          </p>
         </Col>
         <Col sm>
-          <h4> Contact Us</h4>
-          <p>Berliner str 20 </p>
+          <h4>Contact Us</h4>
+          <p>Berliner str 20</p>
           <p>38118</p>
           <p>Braunschweig</p>
           <p>Phone:number: +49XXXX</p>
         </Col>
         <Col sm>
           <h4>Follow Us</h4>
-          <p>Facebook</p>
-          <p>Instagram</p>
-          <p>Linkedin</p>
-          <p>Tik Tok</p>
+          <p>
+            <Link to="#">Facebook</Link>
+          </p>
+          <p>
+            <Link to="#">Instagram</Link>
+          </p>
+          <p>
+            <Link to="#">Linkedin</Link>
+          </p>
+          <p>
+            <Link to="#">Tik Tok</Link>
+          </p>
         </Col>
       </Row>
     </Container>

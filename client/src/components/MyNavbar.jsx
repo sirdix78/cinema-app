@@ -9,9 +9,11 @@ import { IoIosLogIn } from "react-icons/io";
 import { LuUserRoundPlus } from "react-icons/lu";
 import { useContext } from "react";
 import { MovieContext } from "../contexts/MovieContext";
+import { AuthContext } from "../contexts/AuthContext";
 
 function MyNavbar({ setCategory }) {
   const { searchTerm, setSearchTerm } = useContext(MovieContext);
+  const { isLoggedIn, handleLogout } = useContext(AuthContext);
   console.log(searchTerm);
   return (
     <Navbar expand="lg" className="bg-body-tertiary my-nav">
@@ -42,25 +44,33 @@ function MyNavbar({ setCategory }) {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Link to="/login">
-            <IoIosLogIn className="icons" />
-          </Link>
-          <Link to="/signup">
-            <LuUserRoundPlus className="icons" />
-          </Link>
-          <Form className="d-flex">
-            <Form.Control
-              type="text"
-              placeholder="Search"
-              style={{
-                color: "white",
-              }}
-              className="search-input me-2 my-search"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <Button className="search-btn">Search</Button>
-          </Form>
+          {isLoggedIn ? (
+            <button onClick={handleLogout} class="btn-logout">
+              Logout
+            </button>
+          ) : (
+            <>
+              <Link to="/login">
+                <IoIosLogIn className="icons" />
+              </Link>
+              <Link to="/signup">
+                <LuUserRoundPlus className="icons" />
+              </Link>
+              <Form className="d-flex">
+                <Form.Control
+                  type="text"
+                  placeholder="Search"
+                  style={{
+                    color: "white",
+                  }}
+                  className="search-input me-2 my-search"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <Button className="search-btn">Search</Button>
+              </Form>
+            </>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
